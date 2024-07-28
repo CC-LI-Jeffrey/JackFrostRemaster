@@ -21,18 +21,16 @@ public class CameraFollow : MonoBehaviour
         camPos.x = player.position.x;
         camPos.y = player.position.y;
         
-        camera.transform.position = camPos;
-        
-        if (camera.transform.position.x < left.position.x)
+        if (camPos.x < left.position.x)
             camPos.x = left.position.x;
 
-        if (camera.transform.position.x > right.position.x)
+        if (camPos.x > right.position.x)
             camPos.x = right.position.x;
 
-        if (camera.transform.position.y > up.position.y)
+        if (camPos.y > up.position.y)
             camPos.y = up.position.y;
 
-        if (camera.transform.position.y < down.position.y)
+        if (camPos.y < down.position.y)
             camPos.y = down.position.y;
 
         camera.transform.position = camPos;
