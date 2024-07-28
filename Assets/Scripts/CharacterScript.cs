@@ -10,10 +10,12 @@ public class CharacterScript : MonoBehaviour
     private bool isFacingLeft;
     private float horizontal;
     private Rigidbody2D rb;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,8 @@ public class CharacterScript : MonoBehaviour
         }
 
         Flip();
+        
+        animator.SetBool("IsRunning", horizontal != 0);
     }
 
     private void FixedUpdate()

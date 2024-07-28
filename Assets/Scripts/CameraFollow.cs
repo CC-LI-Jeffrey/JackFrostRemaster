@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    private Camera camera;
+    private Camera cam;
     [SerializeField] private Transform player;
     [SerializeField] private Transform left;
     [SerializeField] private Transform right;
@@ -12,12 +12,12 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        camera = Camera.main;
+        cam = Camera.main;
     }
 
     void Update()
     {
-        Vector3 camPos = camera.transform.position;
+        Vector3 camPos = cam.transform.position;
         camPos.x = player.position.x;
         camPos.y = player.position.y;
         
@@ -33,6 +33,6 @@ public class CameraFollow : MonoBehaviour
         if (camPos.y < down.position.y)
             camPos.y = down.position.y;
 
-        camera.transform.position = camPos;
+        cam.transform.position = camPos;
     }
 }
