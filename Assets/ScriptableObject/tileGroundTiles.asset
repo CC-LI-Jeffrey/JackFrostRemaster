@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc87caf6fb2c5c40bb9c84ddeb08ece, type: 3}
+  m_Name: tileGroundTiles
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: 7ac888834702f0d4d9b89626028877cb, type: 2}
+  - {fileID: 11400000, guid: 5c51f29a0326b394f9c859ba2958fdad, type: 2}
+  - {fileID: 11400000, guid: aff73a17aa2f07f41aa97c3c53189b7e, type: 2}
+  - {fileID: 11400000, guid: 9ab5bc77bbb3e43478e5d29c94fd82dc, type: 2}

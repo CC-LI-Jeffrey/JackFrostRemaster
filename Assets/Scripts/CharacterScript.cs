@@ -7,27 +7,35 @@ public class CharacterScript : MonoBehaviour
     [SerializeField] private float jumpingPower;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    private bool isFacingLeft;
+    
+    public bool isFacingLeft;
     private float horizontal;
     private Rigidbody2D rb;
+    private BoxCollider2D collider;
     private Animator animator;
-    // Start is called before the first frame update
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        collider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
 
+        if (IsGrounded())
+        {
+            collider.isTrigger = false;
+        }
+        
         if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
         {
+            collider.isTrigger = true;
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
-
+        
         Flip();
         
         animator.SetBool("IsRunning", horizontal != 0);
@@ -48,9 +56,14 @@ public class CharacterScript : MonoBehaviour
         if (isFacingLeft && horizontal > 0f || !isFacingLeft && horizontal < 0f)
         {
             isFacingLeft = !isFacingLeft;
+            if (isFacingLeft)
+                transform.position += new Vector3(-0.5f, 0f, 0f);
+            else
+                transform.position += new Vector3(0.5f, 0f, 0f);
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            
         }
     }
 }

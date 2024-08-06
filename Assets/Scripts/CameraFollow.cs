@@ -10,16 +10,22 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Transform up;
     [SerializeField] private Transform down;
 
+    private CharacterScript _characterScript;
     private void Start()
     {
         cam = Camera.main;
+        _characterScript = player.GetComponent<CharacterScript>();
     }
 
     void Update()
     {
         Vector3 camPos = cam.transform.position;
-        camPos.x = player.position.x;
+        
         camPos.y = player.position.y;
+        if (_characterScript.isFacingLeft)
+            camPos.x = player.position.x + 0.25f;
+        else
+            camPos.x = player.position.x - 0.25f;
         
         if (camPos.x < left.position.x)
             camPos.x = left.position.x;
@@ -32,7 +38,7 @@ public class CameraFollow : MonoBehaviour
 
         if (camPos.y < down.position.y)
             camPos.y = down.position.y;
-
+        
         cam.transform.position = camPos;
     }
 }
